@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Cafetería "Las Águilas"</title>
+  <!-- Fuente Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <!-- CSS externo -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ===========================
+       LOGIN
+  ============================ -->
+  
+  <div id="login">
+    <h2>Acceso a la Cafetería</h2>
+    <form id="formLogin">
+      <input type="text" id="usuario" placeholder="Usuario"><br>
+      <input type="password" id="contrasena" placeholder="Contraseña"><br>
+
+      <div class="login-boton-container">
+        <button type="submit" class="boton-icono">
+          <span class="texto"></span>
+        </button>
+        
+      </div>
+    </form>
+    <p id="mensaje"></p>
+  </div>
+
+ <!-- ===========================
+     MENÚ PRINCIPAL
+=========================== -->
+<div id="menu" style="display:none;">
+  <div class="titulo-menu">
+    <h2>MENÚ PRINCIPAL</h2>
+  </div>
+
+  <div class="menu-media-luna">
+    <button data-seccion="venta">
+      <span class="imagen" style="background-image:url('img/venta.jpg');"></span>
+      <div class="texto" style="margin-top:32px;">VENTAS</div>
+    </button>
+    <button data-seccion="productos">
+      <span class="imagen" style="background-image:url('img/productos.jpg');"></span>
+      <div class="texto">AÑADIR<br>PRODUCTOS</div>
+    </button>
+
+    <button data-seccion="promocion">
+      <span class="imagen" style="background-image:url('img/promocion.jpg');"></span>
+      <div class="texto" >AÑADIR<br>PROMOCIÓN</div>
+    </button>
+    <button data-seccion="ventasAnteriores">
+      <span class="imagen" style="background-image:url('img/anteriores.jpg');"></span>
+      <div class="texto" >VENTAS<br>ANTERIORES</div>
+    </button>
+    <button data-seccion="opciones">
+      <span class="imagen" style="background-image:url('img/opciones.jpg');"></span>
+      <div class="texto" style="margin-top:32px;">OPCIONES</div>
+    </button>
+  </div>
+</div>
+
+  <!-- ===========================
+       PÁGINA DE LA CAFETERÍA
+  ============================ -->
+  <div id="cafeteria" class="seccion" style="display:none;">
+    <div id="fechaHoy" class="fecha-hoy"></div>
+    <h1 class="titulo-cafeteria">Cafetería "Las Águilas"</h1>
+
+    <div class="linea-venta">
+      <select id="producto">
+        <option value="" disabled selected>-- Selecciona un producto --</option>
+      </select>
+
+      <span id="precioProducto">0.00 €</span>
+      <select id="cantidad">
+        <option value="" disabled selected>-- Cantidad --</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      
+      <button id="btnAñadir">
+        <img src="img/carrito.jpg" alt="Añadir al carrito" class="icon-carrito">
+      </button>
+
+    </div>
+
+    <p id="productoError" class="error"></p>
+
+    <!-- Promoción -->
+    <div>
+      <label>
+        <input type="checkbox" id="promoCheck"> ¿Aplicar promoción?
+      </label>
+
+      <div id="promoBox" style="display:none; margin-top:10px;">
+        <div class="linea-promo">
+          <select id="promocionVenta">
+            <option value="" disabled selected>-- Selecciona una promoción --</option>
+          </select>
+
+          <span id="precioPromo">0.00 €</span>
+          <button id="btnPromo" class="btn-circular">
+            <img src="img/promocion.jpg" alt="Añadir promoción" class="icon-carrito">
+          </button>
+
+        </div>
+        <p id="promoError" class="error"></p>
+      </div>
+    </div>
+
+    <h2>Carrito</h2>
+    <div class="linea-carrito">
+      <ul id="carrito"></ul>
+      <p>Total: <span id="total">0</span> €</p>
+    </div>
+
+    <h2>Pago</h2>
+    <div class="linea-pago">
+      <input type="number" id="pago" step="0.01" placeholder="Cantidad pagada">
+      <button id="btnCambio" class="btn-circular">
+        <img src="img/cambio.jpg" alt="Calcular cambio" class="icon-carrito">
+      </button>
+
+    </div>
+
+    <p id="cambio"></p>
+    <!-- Mensaje de confirmación -->
+    <p id="mensajeVenta" class="ok"></p>
+
+    <div class="linea-volver">
+      <button class="btnVolver">
+        <span class="icono-volver"></span>
+        <span class="texto-volver"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ===========================
+     PÁGINA DE PRODUCTOS
+=========================== -->
+<div id="productos"  class="seccion" style="display:none;">
+  <h2 class="titulo-productos">Añadir productos</h2>
+
+  <form id="formProductos" class="form-productos">
+    <!-- Nombre: solo letras y espacios -->
+    <input type="text" id="nombreProducto" 
+           placeholder="Nombre del producto"
+           pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+"
+           title="Solo letras y espacios">
+
+    <!-- Precio: solo números y decimales -->
+    <input type="text" id="precioProductoNuevo" inputmode="decimal" placeholder="Precio">
+
+    <!-- Botón Añadir: icono circular + texto debajo -->
+    <button id="btnAddProducto" class="btn-icon" type="button">
+      <span class="icon" style="background-image:url('img/añadir.jpg');"></span>
+      <span class="texto">Añadir</span>
+    </button>
+
+  </form>
+
+  <p id="mensajeProducto"></p>
+  <p id="sugerenciasProducto"></p> <!-- sin clase al inicio -->
+
+  <div class="caja-subtitulo-productos">
+    <h3 class="subtitulo-productos">Productos</h3>
+  </div>
+
+
+  <ul id="listaProductos"></ul>
+
+  <div class="linea-volver">
+    <button class="btnVolver">
+      <span class="icono-volver"></span>
+      <span class="texto-volver"></span>
+    </button>
+  </div>
+</div>
+
+<!-- ===========================
+     PÁGINA DE PROMOCIONES
+=========================== -->
+<div id="promocion" class="seccion" style="display:none;">
+  <h2 class="titulo-promociones">Gestión de promociones</h2>
+  
+  <form id="formPromociones" class="form-promociones">
+  <!-- Nombre: admite letras y números -->
+  <input type="text" id="nombrePromocion" 
+         placeholder="Añadir promoción"
+         title="Puedes escribir letras y números">
+
+  <!-- Precio: solo números y decimales -->
+  <input type="text" id="precioPromocionNuevo" 
+         inputmode="decimal" 
+         placeholder="Precio especial">
+
+  <button id="btnAddPromocion" class="btn-icon" type="button">
+    <span class="icon" style="background-image:url('img/registrar.jpg');"></span>
+    <span class="texto">Registrar</span>
+  </button>
+
+</form>
+
+
+  <p id="mensajePromocion"></p>
+
+  <div class="contenedor-promociones">
+    <div class="caja-subtitulo-promociones">
+      <h3 class="subtitulo-promociones">Ofertas Activas</h3>
+    </div>
+  </div>
+
+  <div class="contenedor-lista-promociones">
+  <ul id="listaPromociones"></ul>
+</div>
+
+
+  <!-- Botón volver al menú -->
+  <div class="linea-volver">
+    <button class="btnVolver">
+      <span class="icono-volver"></span>
+      <span class="texto-volver"></span>
+    </button>
+  </div>
+</div>
+
+<!-- ===========================
+       VENTAS ANTERIORES
+=========================== -->
+<div id="ventasAnteriores" class="seccion" style="display:none;">
+  <h1 class="titulo-ventas">Ventas Anteriores</h1>
+
+  <!-- Filtro por fecha -->
+  <div class="filtro-fecha">
+    <label for="fechaFiltro">Selecciona fecha:</label>
+    <input type="date" id="fechaFiltro">
+    <!-- Botón filtrar con imagen redondeada -->
+    <button id="btnFiltrarVentas" class="btn-filtrar">
+      <span class="imagen" style="background-image:url('img/filtarventaanteriores.jpg');"></span>
+    </button>
+  </div>
+
+  <!-- Tabla de ventas -->
+  <div class="tabla-ventas">
+    <table>
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Producto / Promoción</th>
+          <th>Cantidad</th>
+          <th>Total (€)</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="listaVentas">
+        <!-- Aquí se insertan dinámicamente las ventas -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Modal para ver detalle de la venta -->
+  <div id="modalDetalle" class="modal">
+    <div class="modal-contenido">
+      <button class="cerrar">
+        <img src="img/cerrarmodal.jpg" alt="Cerrar modal">
+      </button>
+      <h2>Detalle de la venta</h2>
+      <div id="detalleVenta"></div>
+
+      <!-- Botón descargar Excel -->
+      <div class="descargar-excel">
+        <button id="btnDescargarExcel">
+          <img src="img/descargarexcel.jpg" alt="Descargar Excel">
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botón volver al menú (fuera del modal) -->
+  <div class="linea-volver">
+    <button class="btnVolver">
+      <span class="icono-volver"></span>
+      <span class="texto-volver">Volver al menú</span>
+    </button>
+  </div>
+</div>
+
+<!-- ===========================
+     PÁGINA DE OPCIONES
+=========================== -->
+<div id="opciones" class="seccion" style="display:none;">
+  <h2 class="titulo-opciones">OPCIONES</h2>
+
+  <!-- Contenedor de botones principales -->
+  <div class="contenedor-opciones" style="display:flex; justify-content:center; gap:60px; margin-top:30px;">
+    
+    <!-- Botón Cierre de Caja -->
+    <div class="opcion-item">
+      <button id="btnCierreCaja" class="btn-opciones" data-seccion="cierreCaja">
+        <img src="img/cierrecaja.jpg" alt="Cierre de caja" class="icon-opciones">
+      </button>
+      <span class="texto-opciones">CIERRE DE CAJA</span>
+    </div>
+
+    <!-- Botón Listado de Clientes -->
+    <div class="opcion-item">
+      <button id="btnListadoClientes" class="btn-opciones" data-seccion="listadoClientes">
+        <img src="img/listadoclientes.jpg" alt="Listado de Clientes" class="icon-opciones">
+      </button>
+      <span class="texto-opciones">LISTADO DE CLIENTES</span>
+    </div>
+
+    <!-- Botón Cierres Anteriores -->
+    <div class="opcion-item">
+      <button id="btnCierresAnteriores" class="btn-opciones" data-seccion="cierresAnteriores">
+        <img src="img/cierres.jpg" alt="Cierres Anteriores"class="icon-opciones">
+      </button>
+
+      <span class="texto-opciones">CIERRES ANTERIORES</span>
+    </div>
+
+  </div>
+
+  <!-- Botón volver al menú -->
+  <div class="linea-volver" style="margin-top:20px;">
+    <button class="btnVolver">
+      <span class="icono-volver"></span>
+      <span class="texto-volver">Volver al menú</span>
+    </button>
+  </div>
+</div>
+
+
+<!-- ===========================
+     PÁGINA DE CIERRE DE CAJA
+=========================== -->
+<div id="cierreCaja" class="seccion" style="display:none;">
+  <h2 class="titulo-cierre">CIERRE DE CAJA</h2>
+  <span class="fecha-hoy" id="fechaCierre"></span>
+
+  <!-- Botón volver al menú justo debajo de la fecha -->
+  <div class="linea-volver">
+    <button class="btnVolver">
+      <span class="icono-volver"></span>
+      <span class="texto-volver">Volver al menú</span>
+    </button>
+  </div>
+
+  <!-- Total vendido en el día -->
+  <div class="resumen-caja">
+    <p><strong>Total vendido en el día:</strong> <span id="totalDia"></span> €</p>
+  </div>
+
+  <div class="contenedor-cierre">
+    <!-- Columna 1: formulario principal -->
+    <div class="form-cierre">
+      <div class="fila-cierre">
+        <label for="dineroCaja">Dinero Recibido en caja:</label>
+        <input type="number" id="dineroCaja" step="0.01">
+      </div>
+      <div class="fila-cierre">
+        <label for="bizumCaja">Bizum:</label>
+        <input type="number" id="bizumCaja" step="0.01">
+      </div>
+      <div class="fila-cierre">
+        <label for="pendienteCaja">Pendiente por ingresar (Clientes):</label>
+        <input type="number" id="pendienteCaja" step="0.01">
+      </div>
+      <div class="fila-cierre">
+        <label for="importeDejar">Importe que se dejará en caja:</label>
+        <input type="number" id="importeDejar" step="0.01">
+      </div>
+
+      <!-- Botón guardar debajo de la columna 1 -->
+      <button id="btnGuardarCierre"></button>
+    </div>
+
+    <!-- Columna 2: Monedas -->
+    <div class="columna-extra">
+      <h3 class="subtitulo-cierre">Monedas</h3>
+      <div class="fila-cierre">
+        <label>0,05 €</label>
+        <input type="number" id="moneda05" min="0">
+      </div>
+      <div class="fila-cierre">
+        <label>0,10 €</label>
+        <input type="number" id="moneda10" min="0">
+      </div>
+      <div class="fila-cierre">
+        <label>0,20 €</label>
+        <input type="number" id="moneda20" min="0">
+      </div>
+      <div class="fila-cierre">
+        <label>0,50 €</label>
+        <input type="number" id="moneda50" min="0">
+      </div>
+      <div class="fila-cierre">
+        <label>1 €</label>
+        <input type="number" id="moneda1" min="0">
+      </div>
+      <div class="fila-cierre">
+        <label>2 €</label>
+        <input type="number" id="moneda2" min="0">
+      </div>
+    </div>
+
+    <!-- Columna 3: Billetes -->
+    <div class="columna-extra">
+      <h3 class="subtitulo-cierre">Billetes</h3>
+      <div class="fila-cierre">
+        <label>5 €</label>
+        <input type="number" id="billete5" min="0">
+      </div>
+      <div class="fila-cierre">
+        <label>10 €</label>
+        <input type="number" id="billete10" min="0">
+      </div>
+      <div class="fila-cierre">
+        <label>20 €</label>
+        <input type="number" id="billete20" min="0">
+      </div>
+    </div>
+
+    <!-- Columna 4: TOTAL -->
+    <div class="columna-extra">
+      <h3 class="subtitulo-cierre">TOTAL</h3>
+      <p><strong>Total efectivo:</strong> <span id="totalEfectivo">0 €</span></p>
+    </div>
+  </div> <!-- cierre de contenedor-cierre -->
+</div>
+
+<!-- ===========================
+     LISTADO DE CLIENTES
+=========================== -->
+<div id="listadoClientes" class="seccion">
+  <h2>LISTADO DE CLIENTES PENDIENTES DE PAGO</h2>
+
+  <!-- Formulario para añadir cliente -->
+  <div class="form-clientes">
+    <input
+      type="text"
+      id="nombreCliente"
+      placeholder="Nombre del cliente"
+      pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+"
+      title="Solo se permiten letras"
+      required
+    />
+
+    <input
+      type="number"
+      id="cantidadPendiente"
+      placeholder="Cantidad"
+      step="0.01"
+      min="0"
+      title="Introduce un número válido con decimales"
+      required
+    />
+
+    <button id="btnAgregarCliente">
+      <img src="img/añadircliente.jpg" alt="Agregar cliente" />
+      <span></span>
+    </button>
+  </div>
+
+  <!-- Tabla de clientes -->
+  <table id="tablaClientes">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Cantidad pendiente de pagar</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Filas dinámicas -->
+    </tbody>
+  </table>
+
+  <!-- Botón volver fijo arriba a la derecha SOLO dentro de clientes -->
+  <a href="#" id="btnVolver">
+    <img src="img/volver.jpg" alt="Volver">
+    <span>VOLVER</span>
+  </a>
+
+</div>
+
+<!-- Contenedor para mensajes flotantes -->
+<div id="toast"></div>
+
+<!-- ===========================
+     CIERRES ANTERIORES
+=========================== -->
+<div id="cierresAnteriores" class="seccion" style="display:none;">
+  <h2 class="titulo-cierres">CIERRES ANTERIORES</h2>
+
+  <!-- Botón volver fijo arriba a la derecha -->
+  <a href="#" id="btnVolverCierres">
+    <img src="img/volvercierres.jpg" alt="Volver">
+  </a>
+
+  <div class="tabla-cierres-container">
+    <table id="tablaCierres">
+      <thead>
+        <tr>
+          <th>FECHA</th>
+          <th>FALTANTE</th> <!-- 👈 nueva columna -->
+          <th>RECIBIDO EN CAJA</th>
+          <th>TOTAL VENDIDO</th>
+          <th>TOTAL EN CAJA</th>
+          <th>DEJADO EN CAJA</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Filas dinámicas se insertarán aquí desde JS -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===========================
+     MENSAJE FLOTANTE
+=========================== -->
+<div id="mensajeFlotante" class="modal-flotante" style="display:none;">
+  <div class="contenido-flotante">
+    <p id="textoFlotante"></p>
+    <button id="btnAceptarFlotante">
+      <img src="img/aceptar.jpg" alt="Aceptar">
+    </button>
+  </div>
+</div>
+
+<!-- ===========================
+       JS EXTERNO
+=========================== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

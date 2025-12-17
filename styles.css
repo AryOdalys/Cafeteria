@@ -1,0 +1,1678 @@
+/* ===========================
+   FONDO GENERAL
+=========================== */
+body {
+  background-image: url('img/fondo.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  cursor: default;
+}
+
+/* ===========================
+   LOGIN
+=========================== */
+#login {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  padding: 40px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+}
+#formLogin {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+#login h2 {
+  margin-bottom: 24px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 22px;
+}
+#login input[type="text"],
+#login input[type="password"] {
+  width: 90%;
+  padding: 12px 16px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #333;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+#login input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #00c6ff;
+}
+/* Botón circular de login */
+.boton-icono {
+  border: none;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  background-image: url('img/entrar.jpg');
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  margin-top: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.boton-icono:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+}
+.boton-icono:active { transform: scale(0.98); }
+
+/* ===========================
+   MENÚ PRINCIPAL
+=========================== */
+#menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+/* Título centrado y decorado */
+.titulo-menu {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  padding: 20px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  margin: 0 auto 40px;
+  text-align: center;
+  max-width: fit-content;
+}
+
+.titulo-menu h2 {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: 36px;
+  color: #2c2c2c;
+  text-transform: uppercase;
+  position: relative;
+  margin: 0;
+  text-shadow: 1px 1px 4px rgba(255,255,255,0.2);
+}
+
+.titulo-menu h2::before,
+.titulo-menu h2::after {
+  content: "•";
+  font-size: 28px;
+  color: #2c2c2c;
+  position: absolute;
+  top: 0;
+}
+.titulo-menu h2::before { left: -30px; }
+.titulo-menu h2::after { right: -30px; }
+
+/* Contenedor en forma de arco */
+.menu-media-luna {
+  position: relative;
+  width: 700px;   /* ancho del arco */
+  height: 220px;  /* alto del arco */
+  margin: 0 auto;
+}
+
+/* Botones posicionados en arco hacia arriba */
+.menu-media-luna button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+/* Distribución en media luna hacia arriba */
+.menu-media-luna button:nth-child(1) {
+  transform: translate(-260px, 40px);
+}
+.menu-media-luna button:nth-child(2) {
+  transform: translate(-130px, 80px);
+}
+.menu-media-luna button:nth-child(3) {
+  transform: translate(0px, 100px);
+}
+.menu-media-luna button:nth-child(4) {
+  transform: translate(130px, 80px);
+}
+.menu-media-luna button:nth-child(5) {
+  transform: translate(260px, 40px);
+}
+
+/* Imagen circular */
+.menu-media-luna button .imagen {
+  display: block;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Brillo solo al pasar el cursor por la imagen */
+.menu-media-luna button .imagen:hover {
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+}
+
+/* Texto debajo: aparece solo cuando se pasa el cursor por la imagen */
+.menu-media-luna button .imagen:hover + .texto {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.menu-media-luna button .texto {
+  margin-top: 10px; /* 👈 separación clara */
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  white-space: pre-line;
+}
+
+/* ===========================
+   VENTA (CAFETERÍA)
+=========================== */
+#cafeteria {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  width: 90%;
+  max-width: 900px;
+  text-align: center;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Título centrado arriba */
+#cafeteria .titulo-cafeteria {
+  margin-top: 0;
+  margin-bottom: 25px;
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
+}
+
+/* Fecha arriba a la derecha */
+.fecha-hoy {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  background: rgba(255,255,255,0.25);
+  padding: 6px 12px;
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+}
+
+/* Líneas de venta, promo y pago */
+.linea-venta,
+.linea-promo,
+.linea-pago {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 20px 0;
+}
+
+/* Botones circulares: añadir, promo y cambio */
+#cafeteria #btnAñadir,
+#cafeteria #btnPromo,
+#cafeteria #btnCambio {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+#cafeteria #btnAñadir:hover,
+#cafeteria #btnPromo:hover,
+#cafeteria #btnCambio:hover {
+  transform: scale(1.08);
+}
+
+#cafeteria #btnAñadir .icon-carrito,
+#cafeteria #btnPromo .icon-carrito,
+#cafeteria #btnCambio .icon-carrito {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+/* Carrito */
+.linea-carrito {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  padding: 15px;
+  border-radius: 8px;
+  margin: 20px 0;
+  text-align: left;
+}
+
+/* Estilo destacado para el total */
+.linea-carrito #total {
+  font-weight: bold;       /* negrita */
+  color: #c0392b;          /* rojo elegante, puedes cambiarlo */
+  font-size: 1.3rem;       /* más grande */
+}
+
+/* Selects e inputs */
+.linea-venta select,
+.linea-promo select,
+.linea-pago input[type="number"],
+.linea-venta input[type="number"] {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+}
+
+/* Mensajes de error y éxito: ocultar si están vacíos */
+.error:empty,
+.ok:empty {
+  display: none;
+}
+
+/* Botón volver al menú */
+.linea-volver button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.icono-volver {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-image: url('img/menu.jpg');
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.linea-volver button:hover .icono-volver {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+}
+
+/* Ocultamos el texto del botón volver */
+.texto-volver {
+  display: none;
+}
+/* Ítems del carrito: fila con texto + botón eliminar */
+.linea-carrito-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Texto del ítem (producto, cantidad y subtotal) */
+.linea-carrito-item > span {
+  font-weight: 600;
+  color: #333;
+}
+
+/* Botón eliminar: pequeño, redondo, con imagen */
+.btn-eliminar-carrito {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-eliminar-carrito img {
+  width: 50px;   /* más grande */
+  height: 50px;  /* más grande */
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+.btn-eliminar-carrito img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+/* Mensaje de venta realizada correctamente */
+#cafeteria #mensajeVenta {
+  background-color: #1b5e20;   /* verde fuerte */
+  color: #e8f5e9;              /* verde muy claro */
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-top: 15px;
+  text-align: center;
+  display: none;               /* oculto por defecto */
+}
+/* Animación para ocultar suavemente el mensaje de venta */
+@keyframes desaparecer {
+  0% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+#cafeteria #mensajeVenta.fade-out {
+  animation: desaparecer 0.6s ease forwards;
+}
+
+/* ===========================
+   PRODUCTOS (AÑADIR)
+=========================== */
+
+/* Título principal */
+.titulo-productos {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin: 10px auto 12px;
+  color: #2c2c2c;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.25);
+}
+
+/* Subtítulo */
+.subtitulo-productos {
+  position: relative;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  color: #2c2c2c;
+}
+.subtitulo-productos::before,
+.subtitulo-productos::after {
+  content: "•";
+  font-size: 22px;
+  color: #2c2c2c;
+  position: absolute;
+  top: 0;
+}
+.subtitulo-productos::before { left: -25px; }
+.subtitulo-productos::after { right: -25px; }
+
+/* Caja subtítulo de productos */
+.caja-subtitulo-productos {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+  padding: 10px 40px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+  max-width: fit-content;
+}
+
+/* Formulario */
+.form-productos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px auto;
+  text-align: center;
+}
+.form-productos input[type="text"],
+.form-productos input[type="number"] {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #333;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Reset botones */
+button {
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  box-shadow: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+/* Botón circular */
+.btn-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  transition: transform 0.2s ease;
+  margin: 4px;
+}
+.btn-icon:hover { transform: scale(1.1); }
+
+/* Icono dentro del botón */
+.btn-icon .icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  display: block;
+}
+
+/* Texto debajo del icono */
+.btn-icon .texto {
+  font-size: 13px;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  margin-top: 4px;
+}
+
+/* Ocultar texto en botón Añadir */
+#btnAddProducto .texto { display: none; }
+
+/* Ocultar texto en botones de acción */
+.acciones-producto .btn-icon .texto { display: none; }
+
+/* Lista de productos */
+#listaProductos {
+  list-style: none;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+#listaProductos li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Texto producto */
+.producto-texto {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Contenedor botones acción */
+.acciones-producto {
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+}
+
+/* 🔑 Iconos más grandes en botones de acción */
+.acciones-producto .btn-icon .icon {
+  width: 55px;   /* aumentado */
+  height: 55px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  display: block;
+}
+
+/* ===========================
+   MENSAJES DE ADVERTENCIA / ÉXITO
+=========================== */
+
+/* Error: cuadro rojo con letras casi blancas */
+.error {
+  background-color: #b71c1c;   /* rojo fuerte */
+  color: #ffebee;              /* rojo muy claro / casi blanco */
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* OK: cuadro verde con letras verde claro */
+.ok {
+  background-color: #1b5e20;   /* verde fuerte */
+  color: #e8f5e9;              /* verde muy claro */
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Sugerencias: cuadro azul */
+.sugerencias {
+  background-color: #0d47a1;   /* azul fuerte */
+  color: #e3f2fd;              /* azul muy claro */
+  font-size: 14px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-top: 8px;
+  text-align: center;
+}
+/* ===========================
+   PROMOCIONES (AÑADIR)
+=========================== */
+.titulo-promociones {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-top: 20px;
+  letter-spacing: -1px;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  color: #333;
+}
+
+/* Estilo para los campos del formulario de promociones */
+.form-promociones input {
+  display: block;
+  width: 80%;
+  margin: 12px auto;
+  padding: 12px;
+  font-size: 1.1rem;
+  border: 2px solid #6c63ff;
+  border-radius: 10px;
+  background: #f9f9ff;
+  color: #333;
+  text-align: center;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.15);
+}
+
+/* Placeholder llamativo */
+.form-promociones input::placeholder {
+  color: #6c63ff;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Botón de registrar promoción */
+.form-promociones .btn-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.form-promociones .btn-icon .icon {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-image: url('img/registrar.jpg');
+  background-size: cover;
+  background-position: center;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+}
+.form-promociones .btn-icon .texto { display: none; }
+
+/* Contenedor padre de la caja */
+.contenedor-promociones { text-align: center; }
+
+/* Caja centrada con puntos */
+.caja-subtitulo-promociones {
+  display: inline-block;
+  margin: 8px auto;
+  padding: 6px 28px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+  position: relative;
+}
+.caja-subtitulo-promociones::before,
+.caja-subtitulo-promociones::after {
+  content: "•";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 22px;
+  color: #2c2c2c;
+}
+.caja-subtitulo-promociones::before { left: 8px; }
+.caja-subtitulo-promociones::after  { right: 8px; }
+
+/* Contenedor visual para la lista de promociones */
+.contenedor-lista-promociones {
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 800px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Lista de promociones */
+#listaPromociones { list-style: none; padding: 0; margin: 0; }
+
+/* Cada promoción como tarjeta */
+#listaPromociones li {
+  position: relative;
+  padding: 12px 16px 10px 16px;
+  margin-bottom: 12px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  min-height: 60px;
+}
+
+/* Texto normal de la promoción */
+.promo-texto {
+  font-weight: bold;
+  color: #333;
+  font-size: 16px;
+  display: block;
+  padding-right: 60px; /* espacio para botones */
+}
+
+/* Contenedor en línea para nombre + input/precio */
+.promo-edicion {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  color: #333;
+  font-size: 16px;
+  padding-right: 60px; /* espacio para los botones */
+}
+.promo-nombre { white-space: nowrap; }
+
+/* Precio editable */
+.edit-precio {
+  width: 80px;
+  font-size: 15px;
+  padding: 6px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #333;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.edit-precio:focus {
+  border-color: #6c63ff;
+  box-shadow: 0 0 6px rgba(108, 99, 255, 0.4);
+  outline: none;
+}
+
+/* Contenedor de botones (arriba derecha) */
+.botones-promocion {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  gap: 10px; /* separación entre botones */
+}
+
+/* Botones redondos base */
+.btn-editar-promo,
+.btn-guardar-promo,
+.btn-cancelar-promo,
+.btn-eliminar-promo {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Editar */
+.btn-editar-promo .icon {
+  width: 100%; height: 100%; border-radius: 50%;
+  background-image: url('img/editarpromo.jpg');
+  background-size: cover; background-position: center;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-editar-promo:hover .icon {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* Guardar */
+.btn-guardar-promo .icon {
+  width: 100%; height: 100%; border-radius: 50%;
+  background-image: url('img/guardarpromo.jpg');
+  background-size: cover; background-position: center;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-guardar-promo:hover .icon {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  background-color: rgba(0, 255, 0, 0.1); /* verde suave al hover */
+}
+
+/* Cancelar */
+.btn-cancelar-promo .icon {
+  width: 100%; height: 100%; border-radius: 50%;
+  background-image: url('img/cancelarpromo.jpg');
+  background-size: cover; background-position: center;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-cancelar-promo:hover .icon {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(255,0,0,0.3); /* rojo suave */
+}
+
+/* Eliminar */
+.btn-eliminar-promo .icon {
+  width: 100%; height: 100%; border-radius: 50%;
+  background-image: url('img/eliminarpromo.jpg');
+  background-size: cover; background-position: center;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-eliminar-promo:hover .icon {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(255,0,0,0.3);
+}
+
+/* Mensajes simples (ajusta a tu sistema) */
+.msg-ok { color: #1b8f3a; font-weight: 600; }
+.msg-error { color: #c33737; font-weight: 600; }
+
+/* ===========================
+   VENTAS ANTERIORES
+=========================== */
+#ventasAnteriores {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  width: 90%;
+  max-width: 900px;
+  text-align: center;
+  margin: 20px auto 0 auto; /* 👈 deja solo margen arriba y centrado horizontal */
+  position: relative;
+}
+
+#ventasAnteriores .titulo-ventas {
+  margin-top: 0;
+  margin-bottom: 25px;
+  font-size: 26px;
+  font-weight: 700;
+  color: white;
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
+}
+
+/* Filtro de fecha */
+.filtro-fecha {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.filtro-fecha input {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+}
+
+/* Botón filtrar con imagen redondeada */
+.btn-filtrar {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+.btn-filtrar .imagen {
+  display: block;
+  width: 36px;   /* 👈 tamaño pequeño */
+  height: 36px;
+  border-radius: 50%; /* 👈 redondeado */
+  background-size: cover;
+  background-position: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.btn-filtrar .imagen:hover {
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+/* Tabla de ventas */
+.tabla-ventas table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,255,255,0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.tabla-ventas th,
+.tabla-ventas td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.tabla-ventas th {
+  background: rgba(0,0,0,0.2);
+  color: white;
+  font-weight: bold;
+}
+.tabla-ventas tr:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+/* Botón ver detalle */
+.btn-ver {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.btn-ver img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: box-shadow 0.3s ease;
+}
+
+.btn-ver img:hover {
+  box-shadow: 0 0 8px rgba(255,255,255,0.6);
+}
+
+/* Modal detalle de venta */
+.modal {
+  display: none; /* oculto por defecto */
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,0.95);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  padding: 20px;
+  width: 300px;
+  z-index: 1000;
+}
+
+.modal-contenido {
+  text-align: left;
+  position: relative; /* 👈 necesario para posicionar el botón dentro */
+}
+
+/* Botón cerrar con imagen */
+.modal .cerrar {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute; /* 👈 lo coloca en la esquina */
+  top: 10px;
+  right: 10px;
+  padding: 0;
+}
+
+.modal .cerrar img {
+  width: 24px;   /* 👈 tamaño de la imagen */
+  height: 24px;
+  object-fit: contain;
+}
+.descargar-excel {
+  position: absolute;
+  bottom: 10px;
+  right: 10px; /* 👈 ahora está a la derecha */
+}
+
+.descargar-excel button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.descargar-excel img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* ===========================
+   OPCIONES
+=========================== */
+#opciones {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  width: 90%;
+  max-width: 900px;
+  text-align: center;
+  margin: 20px auto;
+  position: relative;
+}
+
+#opciones .titulo-opciones {
+  margin: 0 auto 25px;
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 0 12px rgba(255,255,255,0.8), 1px 1px 6px rgba(0,0,0,0.5);
+}
+
+/* Contenedor de los botones principales */
+.contenedor-opciones {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* ahora sí controla la separación */
+  margin-top: 30px;
+}
+.opcion-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Botones principales */
+#opciones .btn-opciones {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#opciones .btn-opciones .icon-opciones {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 12px rgba(255,255,255,0.8);
+  transition: transform 0.2s ease;
+}
+
+#opciones .btn-opciones .icon-opciones:hover {
+  transform: scale(1.08);
+}
+
+/* Texto debajo del círculo, oculto por defecto */
+#opciones .texto-opciones {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Texto aparece al pasar el cursor sobre el botón */
+#opciones .btn-opciones:hover + .texto-opciones {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Botón volver al menú */
+#opciones .linea-volver {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+
+/* ===========================
+   BOTÓN GUARDAR CIERRE DE CAJA
+=========================== */
+#cierreCaja #btnGuardarCierre {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background-image: url('img/guardarcierrecaja.jpg'); /* 👈 pon tu imagen */
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(255,255,255,0.8);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin: 20px auto;   /* 👈 centrado */
+  display: block;
+}
+
+#cierreCaja #btnGuardarCierre:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 16px rgba(255,255,255,1);
+}
+
+/* ===========================
+   BOTÓN VOLVER AL MENÚ
+=========================== */
+#cierreCaja .btnVolver {
+  border: none;
+  background: none;     /* 👈 sin fondo */
+  padding: 0;           /* 👈 sin relleno extra */
+  cursor: pointer;
+  font-weight: 600;
+  color: #1a3d7c;       /* 👈 color que resalta */
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+#cierreCaja .btnVolver:hover {
+  color: #16346d;       /* 👈 un tono más oscuro al pasar el ratón */
+  transform: scale(1.05);
+}
+
+/* Contenedor del botón volver */
+#cierreCaja .linea-volver {
+  display: flex;
+  justify-content: flex-end;  /* 👈 lo manda a la derecha */
+  margin-top: 0;              /* 👈 sin espacio extra debajo de la fecha */
+  position: relative;
+  top: -50px;                 /* 👈 lo sube un poco más cerca de la fecha */
+  width: 100%;                /* 👈 ocupa todo el ancho para poder alinearse */
+}
+
+
+/* ===========================
+   CIERRE DE CAJA
+=========================== */
+#cierreCaja {
+  text-align: left;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* Título centrado con brillo */
+#cierreCaja .titulo-cierre {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 30px;
+  text-shadow: 0 0 12px rgba(255,255,255,0.9), 2px 2px 6px rgba(0,0,0,0.6);
+}
+
+/* Fecha arriba a la derecha */
+#cierreCaja .fecha-hoy {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  background: rgba(255,255,255,0.25);
+  padding: 6px 12px;
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+}
+
+/* Layout en 4 columnas */
+#cierreCaja .contenedor-cierre {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 👈 ahora son 4 columnas */
+  gap: 10px;
+  align-items: start;
+  margin-top: 10px;
+}
+
+/* Formulario con filas */
+#cierreCaja .form-cierre {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Cada fila: etiqueta + input */
+#cierreCaja .fila-cierre {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#cierreCaja .fila-cierre label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #183e85;      /* 👈 azul oscuro que resalta */
+  width: 220px;        /* ancho fijo para alinear etiquetas */
+  text-align: right;
+}
+
+#cierreCaja .fila-cierre input {
+  width: 200px;        /* 👈 la mitad del ancho anterior */
+  height: 25px;        /* le bajé la altura */
+  padding: 6px 8px;
+  border: 1px solid rgba(0,0,0,0.3);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.95);
+  color: #222;
+  font-size: 14px;
+  outline: none;
+}
+
+#cierreCaja .fila-cierre input:focus {
+  border-color: #1a3d7c; /* 👈 mismo color que las letras */
+  box-shadow: 0 0 6px rgba(26,61,124,0.4);
+}
+
+/* Columnas 3 y 4: Monedas y Billetes */
+#cierreCaja .columna-extra {
+  min-height: 200px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Subtítulos dentro de columnas extra */
+#cierreCaja .columna-extra .subtitulo-cierre {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a3d7c;   /* 👈 color que resalta */
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+/* Fila de denominación + input */
+#cierreCaja .columna-extra .fila-cierre {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* 👈 juntos en lugar de separados */
+  gap: 6px;                    /* 👈 espacio mínimo entre label e input */
+}
+
+#cierreCaja .columna-extra .fila-cierre label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a3d7c;   /* 👈 mismo color que subtítulo */
+  width: 70px;      /* 👈 ancho fijo para alinear denominaciones */
+  text-align: right;
+}
+
+#cierreCaja .columna-extra .fila-cierre input {
+  width: 100px;     /* 👈 más estrecho, mitad del ancho anterior */
+  height: 25px;     /* 👈 más fino */
+  padding: 4px 6px;
+  border: 1px solid rgba(0,0,0,0.3);
+  border-radius: 6px;
+  background: rgba(255,255,255,0.95);
+  color: #222;
+  font-size: 14px;
+  outline: none;
+}
+
+#cierreCaja .columna-extra .fila-cierre input:focus {
+  border-color: #1a3d7c;
+  box-shadow: 0 0 5px rgba(26,61,124,0.4);
+}
+/* Bloque resumen de caja (Total vendido en el día) */
+#cierreCaja .resumen-caja {
+  margin-top: -80px;   /* 👈 lo sube aprox. 5 cm respecto al título/fecha */
+  margin-bottom: 10px; /* 👈 deja un poco de aire antes del grid */
+  text-align: left;  /* pone a la izquierda el texto */
+  margin-left: 45px;    /* 👈 lo mueve un poco a la derecha */
+}
+#cierreCaja #pendienteCaja {
+  color: red;          /* 👈 texto en rojo */
+  font-weight: bold;   /* 👈 texto en negrita */
+}
+#cierreCaja #totalEfectivo {
+  color: #d32f2f;             /* 👈 rojo intenso pero no fluorescente */
+  font-weight: bold;          /* 👈 negrita */
+  font-size: 20px;            /* 👈 un poco más grande */
+  text-shadow: 0 0 4px rgba(0,0,0,0.4); /* 👈 sombra oscura suave */
+}
+
+/* ===========================
+   SECCIONES FIJAS CON SCROLL
+=========================== */
+
+/* Listado de productos */
+#listaProductos {
+  max-height: 300px;   /* altura fija aprox. 5 filas */
+  overflow-y: auto;    /* scroll interno */
+}
+
+/* Listado de promociones */
+#listaPromociones {
+  max-height: 300px;   /* altura fija aprox. 5 filas */
+  overflow-y: auto;    /* scroll interno */
+}
+
+/* Tabla de ventas anteriores */
+.tabla-ventas {
+  max-height: 300px;   /* altura fija aprox. 5 filas */
+  overflow-y: auto;    /* scroll interno */
+}
+
+/* ===========================
+   LISTADO DE CLIENTES
+=========================== */
+#listadoClientes {
+  text-align: center;              
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;             
+  justify-content: flex-start;
+  height: auto;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+#listadoClientes h2 {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 20px;
+  text-shadow: 
+    0 0 6px rgba(255, 255, 255, 0.8),
+    0 0 12px rgba(255, 255, 255, 0.6),
+    0 0 18px rgba(0, 0, 0, 0.7);
+}
+
+.form-clientes {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;         
+  width: 100%;
+}
+
+.form-clientes input {
+  padding: 12px;                   
+  font-size: 16px;                 
+  border: 1px solid #444;          
+  border-radius: 8px;
+  width: 250px;                    
+  background-color: rgba(255,255,255,0.95);
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+}
+
+/* Botón agregar redondo */
+#btnAgregarCliente {
+  width: 50px;                     
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255,255,255,0.8);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#btnAgregarCliente img {
+  width: 70%;
+  height: 70%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+#btnAgregarCliente:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 14px rgba(255,255,255,1);
+}
+
+/* ===========================
+   TABLA DE CLIENTES
+=========================== */
+#tablaClientes {
+  width: 100%;
+  margin-top: 10px;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+  text-align: center;
+}
+
+#tablaClientes th, #tablaClientes td {
+  padding: 12px 14px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #f0f0f0;
+  border-radius: 8px;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+#tablaClientes th {
+  font-weight: 600;
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Íconos de acciones (eliminar, editar, guardar, cancelar) */
+.icono-accion {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,0.3);
+  padding: 6px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.icono-accion:hover {
+  transform: scale(1.2);
+  background-color: rgba(255,255,255,0.6);
+}
+
+/* Scroll en tabla */
+#tablaClientes tbody {
+  display: block;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+#tablaClientes thead, #tablaClientes tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+/* ===========================
+   TOAST (MENSAJES FLOTANTES)
+=========================== */
+#toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.toast-message {
+  background-color: rgba(0,0,0,0.85);
+  color: #fff;
+  padding: 12px 20px;
+  margin-top: 10px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow: 0 0 8px rgba(0,0,0,0.3);
+  animation: fadein 0.5s, fadeout 0.5s 3s;
+}
+
+.toast-message.error {
+  background-color: #d9534f;
+}
+
+.toast-message.success {
+  background-color: #5cb85c;
+}
+
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeout {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-10px); }
+}
+
+/* ===========================
+   BOTÓN VOLVER
+=========================== */
+#btnVolver {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(255,255,255,0.9);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+#btnVolver img {
+  width: 70%;
+  height: 70%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+#btnVolver span {
+  position: absolute;
+  bottom: -25px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.3s, bottom 0.3s;
+}
+
+#btnVolver:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 16px rgba(255,255,255,1);
+}
+
+#btnVolver:hover span {
+  bottom: -35px;
+  opacity: 1;
+}
+/* ===========================
+   CIERRES ANTERIORES
+=========================== */
+.titulo-cierres {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 20px;
+  text-shadow: 
+    0 0 6px rgba(255, 255, 255, 0.8),
+    0 0 12px rgba(255, 255, 255, 0.6),
+    0 0 18px rgba(0, 0, 0, 0.7);
+}
+
+/* Contenedor con scroll si hay más de 5 filas */
+.tabla-cierres-container {
+  max-height: 250px; /* aprox 5 filas */
+  overflow-y: auto;
+  width: 100%;
+}
+
+/* Tabla */
+#tablaCierres {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+  text-align: center;
+}
+
+#tablaCierres th, #tablaCierres td {
+  padding: 12px 14px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #f0f0f0;
+  border-radius: 8px;
+  text-align: center;
+}
+
+#tablaCierres th {
+  font-weight: 600;
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Scroll interno en tbody */
+#tablaCierres tbody {
+  display: block;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+#tablaCierres thead, #tablaCierres tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+/* ✅ Estilos específicos para la columna FALTANTE */
+#tablaCierres td.faltante-negativo {
+  color: #ff4d4d;   /* rojo vivo para deuda */
+  font-weight: 700;
+}
+
+#tablaCierres td.faltante-cero {
+  color: #4dff4d;   /* verde para caja cuadrada */
+  font-weight: 700;
+}
+
+/* ===========================
+   BOTÓN VOLVER CIERRES ANTERIORES
+=========================== */
+#btnVolverCierres {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(255,255,255,0.9);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  overflow: hidden;
+  background: transparent;
+}
+
+#btnVolverCierres img {
+  width: 70%;
+  height: 70%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+#btnVolverCierres:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 16px rgba(255,255,255,1);
+}
+
+/* ===========================
+   CIERRE DE CAJA (MENSAJES FLOTANTES)
+=========================== */
+.modal-flotante {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.contenido-flotante {
+  background: #222;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 0 15px rgba(255,255,255,0.8);
+}
+
+#btnAceptarFlotante {
+  margin-top: 15px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+#btnAceptarFlotante img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255,255,255,0.9);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#btnAceptarFlotante img:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 16px rgba(255,255,255,1);
+}

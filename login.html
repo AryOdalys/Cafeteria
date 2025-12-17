@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Login con Google Identity Services</title>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script>
+    function handleCredentialResponse(response) {
+      // El token JWT que devuelve Google
+      console.log("ID Token: " + response.credential);
+
+      // Decodificar el JWT para obtener datos del usuario
+      const data = parseJwt(response.credential);
+      document.getElementById("status").innerText =
+        `Bienvenido, ${data.name} (${data.email})`;
+    }
+
+    function parseJwt(token) {
+      const base64Url = token.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
+      return JSON.parse(jsonPayload);
+    }
+  </script>
+</head>
+<body>
+  <h1>Autenticación con Google Identity Services</h1>
+
+  <!-- Botón de Google -->
+  <div id="g_id_onload"
+       data-client_id="57469368464-6fpfqkdcvgtk48ud87qofia0o99rr4vv.apps.googleusercontent.com"
+       data-callback="handleCredentialResponse">
+  </div>
+
+  <div class="g_id_signin" data-type="standard"></div>
+
+  <p id="status">No has iniciado sesión</p>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</body>
+</html>
