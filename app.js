@@ -1,5 +1,5 @@
 // 👉 URL de tu Web App de Google Apps Script
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzsjp8s2kjco5PkG2o_sLgY5CC3528CPTVWFLIOl4EvEUkusg0RIkN1vnsNBfX-aemA8w/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzY9-GuLXh9gm2gCJD8S02pb3LXzoO6JntJFnIqMHg3YOh5NNks3RQInsyxOr1WgS07GQ/exec";
 const TOKEN_ACCESS = "AKfycbw51FRk32V9qQPqkXUl11TROvb8jxdR6qcbNHVLNUYkQEV_BncgkK6dEy4385WnzfVG4g"
 
 // Variable global
@@ -59,25 +59,29 @@ async function escribirEnHoja(hoja, values, accion = "añadir", idToken = null) 
       return;
     }
 */
-    let request = {
-      method: "POST",
-      headers: { 
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
+    const params = {
         credentials,
         hoja,
         values,
         accion,
         token: "CAFETERIA2025"
-      }),
+      };
+    let request = {
+      method: "POST",
+      //mode: "no-cors",
+      
+      headers: { 
+        "Content-Type": "text/plain"
+      },
+      body: JSON.stringify(params),
       
     };
 
+    const urlParams = new URLSearchParams(params);
   try {
-    let res = await fetch(WEB_APP_URL, {
-      ...request,
-      redirect: "manual" // 👈 evita que el navegador siga el 302 automáticamente
+    let res = await fetch(`${WEB_APP_URL}`/*?${urlParams.toString()}*/, {
+      ...request/*,
+      redirect: "manual"*/
     });
 
     if(res?.invalidCredentials){
@@ -87,6 +91,8 @@ async function escribirEnHoja(hoja, values, accion = "añadir", idToken = null) 
 
     // Si devuelve 302, obtenemos la cabecera Location y hacemos la petición allí
     if (res.status === 302) {
+      console.log("Redirección detectada (302)");
+      console.log(res);
       const redirectUrl = res.headers.get("Location");
       if (!redirectUrl) throw new Error("Redirección sin Location");
 
